@@ -17,4 +17,6 @@ app.get('/filter/:filter', (req, res) => {
   res.sendFile(output);
 })
 
-app.listen(4444);
+app.listen(4444, () => {
+  console.log('Server listening on http://localhost:4444')
+});
