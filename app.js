@@ -6,7 +6,7 @@ const fs = require('fs');
 app.use(express.static('public'));
 
 
-app.get('/filter/:filter'., (req, res) => {
+app.get('/filter/:filter', (req, res) => {
   res.setHeader('image/png')
   const original = fs.readFileSync(path.join(__dirname, 'original.png'));
   const output = path.join(__dirname, 'public', 'filter.png')
