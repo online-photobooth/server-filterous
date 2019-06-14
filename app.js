@@ -7,11 +7,11 @@ const filterous = require('filterous');
 app.use(express.static('public'));
 
 
-app.get('/filter/:filter', (req, res) => {
+app.get('/filter/:filter', async (req, res) => {
   const original = fs.readFileSync(path.join(__dirname, 'original.png'));
   const output = path.join(__dirname, 'public', 'filter.png')
 
-  filterous.importImage(original, {
+  await filterous.importImage(original, {
     format: 'png'
   })
   .applyInstaFilter(req.params.filter)
