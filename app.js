@@ -11,7 +11,9 @@ app.get('/filter/:filter', (req, res) => {
   const original = fs.readFileSync(path.join(__dirname, 'original.png'));
   const output = path.join(__dirname, 'public', 'filter.png')
 
-  filterous.importImage(original)
+  filterous.importImage(original, {
+    format: 'png'
+  })
   .applyInstaFilter(req.params.filter)
   .save(output);
 
