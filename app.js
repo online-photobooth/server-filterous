@@ -12,7 +12,7 @@ app.get('/filter/:filter', (req, res) => {
   const output = path.join(__dirname, 'public', 'filter.png')
 
   filterous.importImage(original)
-  .applyInstaFilter(filter)
+  .applyInstaFilter(req.params.filter)
   .save(output);
 
   res.sendFile(output);
