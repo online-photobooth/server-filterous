@@ -5,10 +5,11 @@ const fs = require('fs');
 const filterous = require('filterous');
 
 app.use(express.static('public'));
+app.use(express.json());
 
 
-app.get('/filter/:filter', async (req, res) => {
-  const original = fs.readFileSync(path.join(__dirname, 'original.png'));
+app.post('/filter/:filter', async (req, res) => {
+  const input = req.body.image;
   const output = path.join(__dirname, 'public', 'filter.png')
 
   await filterous.importImage(original, {
